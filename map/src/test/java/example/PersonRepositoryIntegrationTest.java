@@ -24,11 +24,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.keyvalue.core.KeyValueTemplate;
-import org.springframework.data.keyvalue.map.MapKeyValueAdapter;
-import org.springframework.data.keyvalue.repository.config.EnableKeyValueRepositories;
+import org.springframework.data.map.repository.config.EnableMapRepositories;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -41,14 +38,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class PersonRepositoryIntegrationTest {
 
 	@Configuration
-	@EnableKeyValueRepositories
-	static class Config {
-
-		@Bean
-		public KeyValueTemplate keyValueTemplate() {
-			return new KeyValueTemplate(new MapKeyValueAdapter());
-		}
-	}
+	@EnableMapRepositories
+	static class Config {}
 
 	@Autowired PersonRepository repository;
 
